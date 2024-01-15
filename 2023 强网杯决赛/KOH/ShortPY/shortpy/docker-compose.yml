@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  chall:
+    build: ./server
+    image: koh_python_server
+    ports:
+      - "28145:1337"
+    networks:
+      - default
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - tmp-volume:/tmp
+
+  game:
+    build: ./game
+    image: koh_python
+
+volumes:
+  tmp-volume:
+    name: "temp-directory"
