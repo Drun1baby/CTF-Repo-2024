@@ -1,0 +1,51 @@
+[project]
+name = "VulnTagger"
+version = "0.1.0"
+description = "Anime images tagger online, but vulnerable."
+authors = [{ name = "Mix", email = "32300164+mnixry@users.noreply.github.com" }]
+dependencies = [
+    "torch>=2.2.1",
+    "fastapi>=0.109.2",
+    "nicegui[highcharts]>=1.4.18",
+    "numpy>=1.26.4",
+    "rich>=13.7.1",
+    "pillow>=10.2.0",
+    "python-dotenv>=1.0.1",
+    "MonkeyType>=23.3.0",          # for profile-driven optimization
+    "limits>=3.10.0",
+]
+requires-python = ">=3.11"
+readme = "README.md"
+license = { text = "GPL-3.0" }
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm.resolution]
+respect-source-order = true
+
+[[tool.pdm.source]]
+name = "torch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+include_packages = ["torch", "torch*"]
+
+[tool.pdm]
+distribution = true
+
+[tool.ruff]
+select = [
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-simplify
+    "SIM",
+    # isort
+    "I",
+]
+target-version = "py311"

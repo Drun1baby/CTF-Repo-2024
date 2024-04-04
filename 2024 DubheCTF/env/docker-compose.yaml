@@ -1,0 +1,13 @@
+services:
+  frontend:
+    build: ./frontend
+    depends_on:
+      - server
+    ports:
+      - "8088:80"
+  server:
+    build: ./server
+    depends_on:
+      - db
+  db:
+    build: ./db
